@@ -1,0 +1,245 @@
+{
+  "92": {
+    "inputs": {
+      "filename_prefix": "video/MiniMax_H3",
+      "format": "auto",
+      "codec": "auto",
+      "video": [
+        "105:91",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "Save Video"
+    }
+  },
+  "115": {
+    "inputs": {
+      "aspect_ratio": "16:9 (Widescreen)",
+      "megapixels": 0.4,
+      "multiple": 32
+    },
+    "class_type": "ResolutionSelector",
+    "_meta": {
+      "title": "Resolution Selector"
+    }
+  },
+  "105:11": {
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "105:24": {
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "105:23": {
+    "inputs": {
+      "samples": [
+        "105:14",
+        0
+      ],
+      "vae": [
+        "105:24",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeAudio",
+    "_meta": {
+      "title": "VAE Decode Audio"
+    }
+  },
+  "105:10": {
+    "inputs": {
+      "samples": [
+        "105:14",
+        0
+      ],
+      "vae": [
+        "105:11",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "105:17": {
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "105:9": {
+    "inputs": {
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1,
+      "model": [
+        "105:6",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "BasicScheduler"
+    }
+  },
+  "105:14": {
+    "inputs": {
+      "noise": [
+        "105:15",
+        0
+      ],
+      "guider": [
+        "105:16",
+        0
+      ],
+      "sampler": [
+        "105:17",
+        0
+      ],
+      "sigmas": [
+        "105:9",
+        0
+      ],
+      "latent_image": [
+        "105:104",
+        1
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "105:16": {
+    "inputs": {
+      "model": [
+        "105:6",
+        0
+      ],
+      "conditioning": [
+        "105:104",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "Basic Guider"
+    }
+  },
+  "105:6": {
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "105:13": {
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "105:15": {
+    "inputs": {
+      "noise_seed": 661414427217984
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "105:91": {
+    "inputs": {
+      "fps": 24,
+      "bit_depth": 8,
+      "images": [
+        "105:10",
+        0
+      ],
+      "audio": [
+        "105:23",
+        0
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "Create Video"
+    }
+  },
+  "105:104": {
+    "inputs": {
+      "prompt": "## SHOT 1 — Wide Static of Yaga's Hut Garden (~00:00–00:14, ~14 seconds)\n\nOpening paragraph: A peaceful morning in a deep ancient forest garden surrounding Baba Yaga's crooked wooden hut elevated on tall chicken legs. Morning light filters through dense birch and pine canopy above creating dappled golden shafts across mossy ground surface and patches of purple wildflowers along a packed dirt path leading to the dark wooden entrance. The thatched roof of dried straw slopes steeply toward the left side where a smoke-blackened cylindrical chimney rises from the ridge emitting thin grey wisps in rhythmic lazy curls as they drift upward into cool blue-grey forest air. A heavy iron lantern hangs from rusted chains about eight feet directly above the doorway — its glass panels intact and reflecting golden morning sunlight that streams down through gaps in overhead tree branches, creating warm bright spots on the packed earth beneath. Deep dense forest stretches behind and to the left of frame with ancient birch and pine trees reaching thirty feet tall whose moss-covered trunks form a wall of greenery extending infinitely into background depth. The entire scene is bathed in soft natural daylight that filters through leaves overhead, casting shifting patterns of light and shadow across every surface from foreground to farthest visible tree line.\n\nTimeline: [0s-2s] Camera holds completely static wide shot establishing the hut elevated on chicken legs slightly right of frame center with forest extending infinitely behind it creating deep sense of isolation — smoke curls lazily upward in slow spirals from chimney stack, wisps thinning as they rise into cool blue-grey air. [2s-3.5s] Morning light continues filtering through dense canopy above with dappled golden shafts shifting subtly across mossy ground surface and purple wildflower patches along dirt path — iron lantern catches and reflects golden morning sunlight creating warm bright spots on packed earth beneath. [3.5s-6s] Static hold continues with no camera movement whatsoever allowing viewer to absorb complete composition: hut elevated on chicken legs centered slightly right of frame, forest extending infinitely behind and to left — smoke from chimney continues its lazy slow spiral upward thinning as wisps disperse into cool blue-grey forest air above. [6s-8s] Same static wide shot with nothing changing except very subtle natural shifts in light through canopy overhead creating gentle movement patterns across mossy ground surface and wildflower patches along dirt path leading toward hut entrance. [8s-10s] Camera remains completely still with no movement at all — smoke continues rising from chimney stack in slow lazy spirals while morning light filters through dense birch and pine above creating dappled golden shafts that shift imperceptibly across forest floor. [10s-12s] Static hold persists with same composition showing crooked wooden hut on chicken legs with deep forest extending infinitely behind — smoke wisps continue their lazy upward spirals into cool blue-grey air while morning light creates patterns of shifting shadow across mossy ground and wildflower patches along path leading to entrance. [12s-14s] Final four seconds of static hold showing complete peaceful scene: hut elevated on chicken legs with thatched roof sloping steeply left, smoke-blackened chimney emitting thin grey wisps in slow rhythmic curls, heavy iron lantern hanging from rusted chains above dark doorway reflecting golden morning light across forest floor dappled by overhead canopy.\n\nAudio section: Soft gentle rustling of pine needles and birch branches moving through a warm morning breeze at low volume creating continuous background texture beneath all other sounds — very faint distant woodsmoke crackle from dying hearth fire inside hut barely audible as it reaches enclosed space boundaries through wooden structure walls — occasional single bird call echoing softly through forest canopy above carried on thin air current that drifts past frame edges without ever breaking into main soundscape.\n\nStyle declaration: Cinematic live-action wide static establishing shot with natural daylight filtering through dense birch and pine canopy creating dappled golden shafts across mossy ground surface — warm directional morning light creates contrast between illuminated foreground elements (lantern glass panels, wildflower patches) and deep cool blue-grey shadows in forest background depth. Shot maintains complete static camera position with only very subtle breathing motion from wind moving through overhead leaves. Color palette is natural earth tones: dried brown wood, green moss, purple asters, golden morning light reflecting off iron lantern glass creating warm bright spots on packed earth floor beneath. Depth of field is deep-focus keeping entire scene sharp from foreground chicken legs to farthest visible tree line in background — no intentional blur anywhere.\n\nDuration marker: ~14 seconds (static hold establishing shot)",
+      "width": [
+        "115",
+        0
+      ],
+      "height": [
+        "115",
+        1
+      ],
+      "length": [
+        "105:107",
+        1
+      ],
+      "clip": [
+        "105:13",
+        0
+      ],
+      "vae": [
+        "105:11",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3ImageToVideo",
+    "_meta": {
+      "title": "MiniMax H3 Image to Video"
+    }
+  },
+  "105:107": {
+    "inputs": {
+      "expression": "max(5, round(a * 24)) + (5 - (max(5, round(a * 24)) % 17)) % 17",
+      "values.a": [
+        "105:111",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression"
+    }
+  },
+  "105:111": {
+    "inputs": {
+      "value": 15
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "Float (duration)"
+    }
+  }
+}

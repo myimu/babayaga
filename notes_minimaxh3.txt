@@ -1,0 +1,10 @@
+https://www.minimax.io/
+tutorial: https://docs.comfy.org/tutorials/video/minimax/minimax-h3
+models: https://huggingface.co/Comfy-Org/MiniMax-H3
+minimax-h3 repo: https://github.com/MiniMax-AI/MiniMax-H3
+skills: https://github.com/MiniMax-AI/MiniMax-H3/tree/main/skills
+
+to send jobs to comfyui: python .\run_comfy_batch.py
+to join snippets to full video file:
+Get-ChildItem .\*.mp4 | ForEach-Object { "file '$($_.Name)'" } | Out-File -FilePath list.txt -Encoding ascii
+ffmpeg -f concat -safe 0 -i .\list.txt -c copy full.mp4

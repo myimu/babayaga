@@ -1,0 +1,26 @@
+# Full-Reference Mode Rewrite Output Format Guide
+
+## Key Structure
+
+The guide defines a complete output consisting of:
+
+1. `subject_definitions` — Defines referenced content and labels
+2. `summary` — Summarizes task type, target video, and reference relationships
+3. `retention_analysis` — Describes how reference content is preserved or reused
+4. `detailed_description` — Shot-by-shot visuals, actions, sound, and dialogue in playback order
+5. `overall_soundscape` — Ambience and physical sounds summary
+6. `non_diegetic_music` — Background music for the audience only
+
+## Reference Labels
+
+The guide uses four label types: `<Subject N>`, `<Picture N>`, `<Video N>`, and `<Audio N>` to identify source content roles throughout all sections.
+
+## Task Types
+
+Possible task type prefixes include `reference generation`, `video editing`, `video continuation`, `audio reuse`, `keyframe completion`, and `audio reference` — combinable with `+`.
+
+## Notable Constraints
+
+- Descriptions written in English; original dialogue preserved inside `<d>` tags
+- Speaker IDs assigned globally as `(S1)`, `(S2)`, etc. per vocal event order
+- Audio relationships cited where active, not invented independently

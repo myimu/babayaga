@@ -11,10 +11,12 @@ COMFY_SERVER_ADDRESS = "127.0.0.1:8000"  # Target port 8000
 CLIENT_ID = str(uuid.uuid4())
 
 # Verified node tracking keys based on your exported layout format
-PROMPT_NODE_ID = "105:104"    # MiniMax H3 Image to Video node
-PROMPT_FIELD_KEY = "prompt"   # Input property key for text parameters
+#PROMPT_NODE_ID = "105:104"    # MiniMax H3 Image to Video node
+#PROMPT_FIELD_KEY = "prompt"   # Input property key for text parameters
+PROMPT_NODE_ID = "138"    # MiniMax H3 Image to Video node
+PROMPT_FIELD_KEY = "value"   # Input property key for text parameters
 
-DURATION_NODE_ID = "105:111"  # Float (duration) Primitive node
+DURATION_NODE_ID = "132"  # Float (duration) Primitive node
 DURATION_FIELD_KEY = "value"  # Input property key for numerical durations
 
 def parse_markdown_shots(file_path: str) -> List[Dict[str, any]]:
@@ -104,10 +106,11 @@ def main():
 
     # 3. Load your exported ComfyUI API format workflow JSON graph
     try:
-        with open("assets/workflows/video_minimax_h3_t2v_api.json", "r") as f:
+        with open("assets/workflows/babayaga_ref.json", "r") as f:
+        #with open("assets/workflows/video_minimax_h3_t2v_api.json", "r") as f:
             workflow_graph = json.load(f)
     except FileNotFoundError:
-        print("[-] Error: 'video_minimax_h3_t2v.json' missing. Export it from ComfyUI Dev Mode first.")
+        print("[-] Error: workflow file 'babayaga_ref.json' missing. Export it from ComfyUI Dev Mode first.")
         return
 
     # 4. Iterate and send the filtered tasks to the pipeline queue

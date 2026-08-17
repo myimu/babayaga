@@ -1,6 +1,6 @@
 # Baba Yaga — AI Video Generation Project
 
-A 3-minute animated film about Baba Yaga, the Slavic folklore witch. Built using **ComfyUI** with **MiniMax H3** video generation models, rendered locally on an AMD Ryzen 9 9900X + RTX 5080 (32 GB RAM).
+A 3-minute animated film about Baba Yaga, the Slavic folklore witch. Built using **ComfyUI** with **MiniMax H3** video generation models, rendered locally on an AMD Ryzen 9 9900X (32 GB RAM) + RTX 5080.
 
 The movie is constructed progressively across multiple acts, each act composed of individually rendered shots stitched together for continuity.
 
